@@ -1,0 +1,14 @@
+official website docker - https://docs.docker.com/
+official website docker hub -https://hub.docker.com/
+
+install docker on linux - https://docs.docker.com/desktop/install/linux-install/
+install docker engine : https://www.youtube.com/watch?v=fu4aaIj6YS4
+install docker compose - https://docs.docker.com/desktop/install/linux-install/
+
+
+https://docs.docker.com/storage/volumes/
+
+
+
+
+ 

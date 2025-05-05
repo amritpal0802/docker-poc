@@ -1,0 +1,71 @@
+version: "3"
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: db
+    restart: always  
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    # volumes:
+    #   - .:/code
+    container_name: server
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres 
+    depends_on:
+      - db
+
+
+  
+
+  # web:
+  #   build: 
+  #     context : .
+  #     dockerfile: Dockerfile
+  #   container_name: server
+  #   ports:
+  #     - 8000:8000
+  #   depends_on:
+  #     - db
+  #   # command: python manage.py runserver 0.0.0.0:8000
+  #   volumes:
+  #     - .:/code
+  #   environment:
+  #     - POSTGRES_NAME=postgres
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+
+
+#   db:
+#     image: mysql
+#     container_name: db
+#     restart: always
+#     # command: --default-authentication-plugin
+#     environment:
+#       # -  MYSQL_DATABASE=mydb
+#       # -  MYSQL_USER=root
+#       # -  MYSQL_PASSWORD=Patani22g@
+#       -  MYSQL_ROOT_PASSWORD=Patani22g@
+#       # -  MYSQL_HOST=0.0.0.0
+#     ports:
+#       - 3306:3306
+#     volumes:
+#       - ./sqldata:/var/lib/mysql
+# volumes:
+#   sqldata:
+
+  

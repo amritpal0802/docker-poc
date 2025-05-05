@@ -1,0 +1,91 @@
+
+DOCKER 
+docker build -- help 
+docker build --tag test1 . 
+
+docker run test1 
+docker run --help 
+docker ps
+docker ps -a 
+docker start container-name 
+docker stop container-name 
+docker rm container-name 
+docker run -p 8000:8000 --name test1container  -d test1
+
+
+DOCKER COMPOSE 
+
+docker-compose build
+docker-compose up 
+docker-compose up -d 
+docker-compose up -d --build
+
+docker logs container_name
+docker logs -f container_name
+docker exec -it container_id /bin/bash 
+
+to remove all images :
+docker rmi $(docker images -a -q)
+docker rmi -f $(docker images -a -q)
+
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+
+to remove all container :
+docker rm $(docker ps -aq)
+
+check status docker : sudo systemctl status docker
+
+POSTGRESQL:
+to enter into postgresql shell:
+psql -h localhost -p 5432 -U postgres -W
+
+sudo systemctl start postgresql
+sudo systemctl stop postgresql
+
+MYSQL:
+to enter into mysql shell:
+mysql -u root -p
+mysql --user=root --password=Patani22g@
+
+to add ENV into mysql : 
+docker run -e MYSQL_ROOT_PASSWORD=root  -d mysql
+
+sudo systemctl start mysql
+sudo systemctl stop mysql
+
+psql -h localhost -p 5432 -U postgres -W
+
+
+psql -d database -U user -W	: Connects to a database under a specific user	-d: used to state the database name  -U:used to state the database user
+psql -h localhost -p 5432 -d postgres -U postgres -W	  :Connect to a database that resides on another host
+
+\c  dbname	Switch connection to a new database	 
+\l	List available databases
+\dt	List available tables	 
+\d table_name	Describe a table such as a column, type, modifiers of columns, etc.
+\dn	List all schemes of the currently connected database	 
+\df	List available functions in the current database	 
+\dv	List available views in the current database	 
+\du	List all users and their assign roles
+\g	Execute the last command again	 
+\s	Display command history	 
+\s filename	Save the command history to a file	 
+\i filename	Execute psql commands from a file	 
+\?	Know all available psql commands
+
+
+
+docker-compose build 
+docker-compose build servicename
+docker-compose up --build
+
+
+docker hub 
+docker push amritpal1tx/testdocker:tagname
+docker tag docker_learning_web a123
+docker volume ls
+
+directory-name_servicename
+
+
+docker pull amritpal1tx/dtxtest:docker_learning_web1
